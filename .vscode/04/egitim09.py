@@ -4,16 +4,16 @@ import cv2
 import numpy as np
 
 # 1. Resmi oku
-img_yolu = "DATA/car_plate.jpg"
+img_yolu = r"C:\yazilim\OpenCV\haarcascade_russian_plate_number.xml"
 
 # Türkçe karakter sorunu yaşamamak için resmi numpy ile okuyup OpenCV formatına (decode) çeviriyoruz
 img_array = np.fromfile(img_yolu, dtype=np.uint8)
 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
 
 if img is None:
-    print("Resim bulunamadı! Lütfen dosya yolunu kontrol et.")
+    print("Lütfen terminal dizinini veya dosya yolunu kontrol edin.")
 else:
-    # 2. Haar Cascade XML dosyasını yükle (Türkçe yol hatası olmaması için OpenCV'nin içindekini çekiyoruz)
+    # 2. Haar Cascade XML dosyasını yükle
     xml_yolu = cv2.data.haarcascades + 'haarcascade_russian_plate_number.xml'
     plate_cascade = cv2.CascadeClassifier(xml_yolu)
 
